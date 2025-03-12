@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Events</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 80%; /* Adjust width as needed */
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #1e1e1e;
+        }
+
+        h2 {
+            color: #bb86fc;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #events-list {
+            margin-bottom: 20px;
+        }
+
+        .event-item {
+            border: 1px solid #424242;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #292929;
+        }
+
+        button {
+            background-color: #bb86fc;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            max-width: 200px; /* Limit button width */
+            margin: 0 auto; /* Center button */
+            display: block; /* Make it a block element to center */
+        }
+
+        button:hover {
+            background-color: #9c68e0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upcoming Events</h2>
+        <div id="events-list"></div>
+        <a href="dashboard.html"><button>Back to Dashboard</button></a>
+    </div>
+
+    <script>
+        fetch('view-event.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('events-list').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading events:', error));
+    </script>
+</body>
+</html>
